@@ -21,6 +21,7 @@ namespace StudentAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Route("GetById")]
         public async Task<ActionResult<Student>> Get(int id)
         {
             var student = await _context.Students.FindAsync(id);
@@ -31,6 +32,7 @@ namespace StudentAPI.Controllers
         }
 
         [HttpPut]
+        [Route("Update")]
         public async Task<ActionResult<Student>> UpdateStudent(Student request)
         {
             var student = await _context.Students.FindAsync(request.Id);
@@ -49,6 +51,7 @@ namespace StudentAPI.Controllers
         }
 
         [HttpPost]
+        [Route("Add")]
         public async Task<ActionResult<List<Student>>> AddStudent(Student student)
         {
             _context.Students.Add(student);
@@ -59,6 +62,7 @@ namespace StudentAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Route("Delete")]
         public async Task<IActionResult> DeleteStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
