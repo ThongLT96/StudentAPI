@@ -15,12 +15,13 @@ namespace StudentAPI.Controllers
         }
 
         [HttpGet]
+        [Route("GetAll")]
         public async Task<ActionResult<List<Student>>> Get()
         {
             return Ok(await _context.Students.ToListAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         [Route("GetById")]
         public async Task<ActionResult<Student>> Get(int id)
         {
@@ -61,9 +62,9 @@ namespace StudentAPI.Controllers
             return UnprocessableEntity("Lỗi");
         }
 
-        [HttpDelete("{id}")]
-        [Route("Delete")]
-        public async Task<IActionResult> DeleteStudent(int id)
+        [HttpDelete]
+        [Route("Remove")]
+        public async Task<IActionResult> RemoveStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
             if (student == null)
