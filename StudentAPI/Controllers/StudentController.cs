@@ -27,7 +27,7 @@ namespace StudentAPI.Controllers
         {
             var student = await _context.Students.FindAsync(id);
             if (student == null)
-                return BadRequest("Không tìm thấy sinh viên này có mã số " + id);
+                return BadRequest("Không tìm thấy sinh viên nào có mã số " + id);
 
             return Ok(student);
         }
